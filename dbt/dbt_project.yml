@@ -1,0 +1,59 @@
+name: energy_pipeline
+version: "1.0.0"
+config-version: 2
+profile: energy_pipeline
+
+model-paths: ["models"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+clean-targets: ["target"]
+
+vars:
+  # Additive measures in TWh (plus population and GDP) that are tracked across
+  # releases. Shares, per-capita and change columns are derived from these
+  # downstream, so they are not stored separately.
+  energy_measures:
+    - population
+    - gdp
+    - primary_energy_consumption
+    - fossil_fuel_consumption
+    - coal_consumption
+    - oil_consumption
+    - gas_consumption
+    - low_carbon_consumption
+    - nuclear_consumption
+    - renewables_consumption
+    - hydro_consumption
+    - wind_consumption
+    - solar_consumption
+    - biofuel_consumption
+    - other_renewable_consumption
+    - electricity_generation
+    - electricity_demand
+    - net_elec_imports
+    - coal_electricity
+    - oil_electricity
+    - gas_electricity
+    - nuclear_electricity
+    - hydro_electricity
+    - wind_electricity
+    - solar_electricity
+    - biofuel_electricity
+    - other_renewable_exc_biofuel_electricity
+    - low_carbon_electricity
+    - renewables_electricity
+    - greenhouse_gas_emissions
+  # Identity checks: a value counts as consistent within this relative tolerance.
+  identity_tolerance: 0.01
+  # Window for the balanced regional panel (see mart_region_year_balanced).
+  panel_start_year: 2000
+  panel_end_year: 2024
+
+models:
+  energy_pipeline:
+    staging:
+      +materialized: view
+    intermediate:
+      +materialized: table
+    marts:
+      +materialized: table
