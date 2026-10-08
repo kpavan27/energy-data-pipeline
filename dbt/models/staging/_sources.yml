@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name: bronze
+    description: >
+      Releases landed by `energy-pipeline ingest`. All values are text as published,
+      plus lineage columns (_release, _source_commit, _source_sha256, _ingested_at).
+    meta:
+      external_location: "read_parquet('{{ env_var('BRONZE_DIR', '../data/bronze') }}/{name}/*/data.parquet', union_by_name = true)"
+    tables:
+      - name: energy
+        description: OWID energy dataset, one partition per pinned release.
+      - name: co2
+        description: OWID CO2 dataset.
+      - name: country_codes
+        description: ISO 3166 codes with UN M49 regions.

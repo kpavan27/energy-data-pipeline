@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: stg_energy
+    description: Typed energy data for every release, countries only.
+    tests:
+      - unique_combination:
+          arguments:
+            columns: [release_date, iso_code, year]
+    columns:
+      - name: release_date
+        tests: [not_null]
+      - name: iso_code
+        tests: [not_null]
+      - name: year
+        tests:
+          - not_null
+          - within_range:
+              arguments: {min_value: 1800, max_value: 2100}
+
+  - name: stg_co2
+    tests:
+      - unique_combination:
+          arguments:
+            columns: [iso_code, year]
+
+  - name: stg_country_codes
+    columns:
+      - name: iso_code
+        tests: [unique, not_null]
