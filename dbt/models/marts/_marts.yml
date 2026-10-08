@@ -1,0 +1,76 @@
+version: 2
+
+models:
+  - name: dim_release
+    description: One row per landed energy release, with the previous release for pairing.
+    columns:
+      - name: release_date
+        tests: [unique, not_null]
+
+  - name: dim_country
+    description: Countries in the latest release with UN M49 region and sub-region.
+    columns:
+      - name: iso_code
+        tests: [unique, not_null]
+      - name: region
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania', 'Unmapped']
+
+  - name: fct_energy_country_year
+    description: Latest-release energy, electricity and CO2 facts per country and year.
+    tests:
+      - unique_combination:
+          arguments:
+            columns: [iso_code, year]
+    columns:
+      - name: iso_code
+        tests:
+          - relationships:
+              arguments: {to: ref('dim_country'), field: iso_code}
+      - name: fossil_share_energy_pct
+        tests:
+          - within_range:
+              arguments: {min_value: 0, max_value: 100.5}
+      - name: low_carbon_share_elec_pct
+        tests:
+          - within_range:
+              arguments: {min_value: 0, max_value: 100.5}
+      - name: co2_kg_per_kwh_primary
+        description: CO2 (Mt) divided by primary energy (TWh), i.e. kg CO2 per kWh.
+
+  - name: fct_metric_revisions
+    description: Cell-level change data capture between consecutive releases.
+    tests:
+      - unique_combination:
+          arguments:
+            columns: [old_release, new_release, iso_code, year, metric]
+    columns:
+      - name: change_type
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['insert', 'delete', 'update', 'unchanged']
+
+  - name: mart_revision_summary
+    description: Revision counts and rescaling diagnostics per release pair and metric.
+    tests:
+      - unique_combination:
+          arguments:
+            columns: [old_release, new_release, metric]
+
+  - name: mart_region_year
+    description: Regional totals for the latest release, shares recomputed from sums. Country coverage varies by year; see the countries column, or use mart_region_year_balanced for trends.
+    tests:
+      - unique_combination:
+          arguments:
+            columns: [region, year]
+
+  - name: mart_region_year_balanced
+    description: Regional low-carbon electricity share over a fixed set of countries, so coverage changes cannot masquerade as trends.
+    tests:
+      - unique_combination:
+          arguments:
+            columns: [region, year]
