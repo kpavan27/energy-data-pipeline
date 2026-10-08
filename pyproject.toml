@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "energy-pipeline"
+version = "1.0.0"
+description = "Versioned energy-data pipeline: pinned ingestion, dbt + DuckDB models, and change data capture across published releases"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+dependencies = [
+    "duckdb>=1.1",
+    "dbt-core>=1.10",
+    "dbt-duckdb>=1.9",
+    "pyyaml>=6",
+    "matplotlib>=3.8",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[project.scripts]
+energy-pipeline = "energy_pipeline.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
