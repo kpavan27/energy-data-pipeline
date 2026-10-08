@@ -1,0 +1,58 @@
+# Every source is pinned to a git commit and a SHA-256 checksum, so a rerun
+# reads exactly the same bytes. To add a release, append an entry and run
+# `energy-pipeline ingest`; the checksum is printed on first download.
+
+sources:
+  energy:
+    description: Our World in Data energy dataset (country-year, ~130 columns)
+    url_template: https://raw.githubusercontent.com/owid/energy-data/{commit}/owid-energy-data.csv
+    licence: CC BY 4.0
+    releases:
+      - release: "2024-09-05"
+        commit: e329efb9c8d1a483010b568c422459d3c6a8182c
+        sha256: 28c0f004eca9058dd5475ede18181e5e800e25e3c20b43ef26822bd7d14ca9b6
+      - release: "2025-07-17"
+        commit: 183bae71e169288660df609c11357bd9fbbe5822
+        sha256: 04cd66dc71a96fdae02f5c379d00976e0d9644df807898085489e4a9d082c21f
+      - release: "2026-04-27"
+        commit: e7897aed55b514b8d16e0a3d8f1518789ac3de31
+        sha256: 266f2e2baad7975351bc9bb4aa061d22b1da9fe4c47d51d2ac6071e01e171f76
+
+  co2:
+    description: Our World in Data CO2 and greenhouse gas dataset
+    url_template: https://raw.githubusercontent.com/owid/co2-data/{commit}/owid-co2-data.csv
+    licence: CC BY 4.0
+    releases:
+      - release: "2026-06-02"
+        commit: 382ee6c662b0ece26e111f263b44c029afad7787
+        sha256: 7f78e2b218ce4bb8c538bbec04fdc9a7982e8d40bff972e650df603899edd5f6
+
+  country_codes:
+    description: ISO 3166 country codes with UN M49 regions (datahub.io)
+    url_template: https://raw.githubusercontent.com/datasets/country-codes/{commit}/data/country-codes.csv
+    licence: ODC-PDDL
+    releases:
+      - release: "2026-10-01"
+        commit: 2e9d6498a0456f4afc2f6cf367d1e12a9ed4afe1
+        sha256: 07918cb63dd8bc43e52110def00d490998634360605e9d8c602865e2260802fd
+
+# Columns each source must provide. Ingestion fails fast if one disappears
+# (a breaking upstream change) and logs, but tolerates, new columns.
+contracts:
+  energy:
+    key: [iso_code, year]
+    required: [country, year, iso_code, population, gdp, primary_energy_consumption,
+               coal_consumption, oil_consumption, gas_consumption, fossil_fuel_consumption,
+               nuclear_consumption, hydro_consumption, wind_consumption, solar_consumption,
+               biofuel_consumption, other_renewable_consumption, low_carbon_consumption,
+               renewables_consumption, electricity_generation, electricity_demand,
+               net_elec_imports, coal_electricity, oil_electricity, gas_electricity,
+               nuclear_electricity, hydro_electricity, wind_electricity, solar_electricity,
+               biofuel_electricity, other_renewable_exc_biofuel_electricity,
+               low_carbon_electricity, renewables_electricity, greenhouse_gas_emissions]
+  co2:
+    key: [iso_code, year]
+    required: [country, year, iso_code, co2, co2_including_luc, population]
+  country_codes:
+    key: [ISO3166-1-Alpha-3]
+    required: [ISO3166-1-Alpha-3, CLDR display name, Region Name, Sub-region Name]
