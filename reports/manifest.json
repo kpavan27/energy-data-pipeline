@@ -1,0 +1,47 @@
+{
+  "co2/2026-06-02": {
+    "columns": 79,
+    "commit": "382ee6c662b0ece26e111f263b44c029afad7787",
+    "release": "2026-06-02",
+    "rows": 50411,
+    "sha256": "7f78e2b218ce4bb8c538bbec04fdc9a7982e8d40bff972e650df603899edd5f6",
+    "source": "co2",
+    "url": "https://raw.githubusercontent.com/owid/co2-data/382ee6c662b0ece26e111f263b44c029afad7787/owid-co2-data.csv"
+  },
+  "country_codes/2026-10-01": {
+    "columns": 56,
+    "commit": "2e9d6498a0456f4afc2f6cf367d1e12a9ed4afe1",
+    "release": "2026-10-01",
+    "rows": 249,
+    "sha256": "07918cb63dd8bc43e52110def00d490998634360605e9d8c602865e2260802fd",
+    "source": "country_codes",
+    "url": "https://raw.githubusercontent.com/datasets/country-codes/2e9d6498a0456f4afc2f6cf367d1e12a9ed4afe1/data/country-codes.csv"
+  },
+  "energy/2024-09-05": {
+    "columns": 130,
+    "commit": "e329efb9c8d1a483010b568c422459d3c6a8182c",
+    "release": "2024-09-05",
+    "rows": 21812,
+    "sha256": "28c0f004eca9058dd5475ede18181e5e800e25e3c20b43ef26822bd7d14ca9b6",
+    "source": "energy",
+    "url": "https://raw.githubusercontent.com/owid/energy-data/e329efb9c8d1a483010b568c422459d3c6a8182c/owid-energy-data.csv"
+  },
+  "energy/2025-07-17": {
+    "columns": 130,
+    "commit": "183bae71e169288660df609c11357bd9fbbe5822",
+    "release": "2025-07-17",
+    "rows": 23195,
+    "sha256": "04cd66dc71a96fdae02f5c379d00976e0d9644df807898085489e4a9d082c21f",
+    "source": "energy",
+    "url": "https://raw.githubusercontent.com/owid/energy-data/183bae71e169288660df609c11357bd9fbbe5822/owid-energy-data.csv"
+  },
+  "energy/2026-04-27": {
+    "columns": 130,
+    "commit": "e7897aed55b514b8d16e0a3d8f1518789ac3de31",
+    "release": "2026-04-27",
+    "rows": 23377,
+    "sha256": "266f2e2baad7975351bc9bb4aa061d22b1da9fe4c47d51d2ac6071e01e171f76",
+    "source": "energy",
+    "url": "https://raw.githubusercontent.com/owid/energy-data/e7897aed55b514b8d16e0a3d8f1518789ac3de31/owid-energy-data.csv"
+  }
+}

@@ -1,0 +1,209 @@
+{
+  "releases": [
+    "2024-09-05",
+    "2025-07-17",
+    "2026-04-27"
+  ],
+  "cell_changes": [
+    {
+      "old_release": "2024-09-05",
+      "new_release": "2025-07-17",
+      "change_type": "delete",
+      "cells": 724
+    },
+    {
+      "old_release": "2024-09-05",
+      "new_release": "2025-07-17",
+      "change_type": "insert",
+      "cells": 17112
+    },
+    {
+      "old_release": "2024-09-05",
+      "new_release": "2025-07-17",
+      "change_type": "unchanged",
+      "cells": 131782
+    },
+    {
+      "old_release": "2024-09-05",
+      "new_release": "2025-07-17",
+      "change_type": "update",
+      "cells": 42838
+    },
+    {
+      "old_release": "2025-07-17",
+      "new_release": "2026-04-27",
+      "change_type": "delete",
+      "cells": 547
+    },
+    {
+      "old_release": "2025-07-17",
+      "new_release": "2026-04-27",
+      "change_type": "insert",
+      "cells": 3575
+    },
+    {
+      "old_release": "2025-07-17",
+      "new_release": "2026-04-27",
+      "change_type": "unchanged",
+      "cells": 175989
+    },
+    {
+      "old_release": "2025-07-17",
+      "new_release": "2026-04-27",
+      "change_type": "update",
+      "cells": 15196
+    }
+  ],
+  "detected_rescaling": [
+    {
+      "old_release": "2024-09-05",
+      "new_release": "2025-07-17",
+      "metric": "hydro_consumption",
+      "updated_cells": 3777,
+      "median_ratio": 0.9394,
+      "p10_ratio": 0.9389,
+      "p90_ratio": 0.9403
+    },
+    {
+      "old_release": "2024-09-05",
+      "new_release": "2025-07-17",
+      "metric": "nuclear_consumption",
+      "updated_cells": 1481,
+      "median_ratio": 0.9789,
+      "p10_ratio": 0.9783,
+      "p90_ratio": 0.9799
+    },
+    {
+      "old_release": "2024-09-05",
+      "new_release": "2025-07-17",
+      "metric": "solar_consumption",
+      "updated_cells": 1311,
+      "median_ratio": 0.9399,
+      "p10_ratio": 0.9384,
+      "p90_ratio": 0.9425
+    },
+    {
+      "old_release": "2024-09-05",
+      "new_release": "2025-07-17",
+      "metric": "wind_consumption",
+      "updated_cells": 1610,
+      "median_ratio": 0.9396,
+      "p10_ratio": 0.9385,
+      "p90_ratio": 0.9415
+    }
+  ],
+  "fossil_revisions_by_decade": [
+    {
+      "old_release": "2024-09-05",
+      "new_release": "2025-07-17",
+      "decade": 1960,
+      "share_updated": 0.011
+    },
+    {
+      "old_release": "2024-09-05",
+      "new_release": "2025-07-17",
+      "decade": 1970,
+      "share_updated": 0.022
+    },
+    {
+      "old_release": "2024-09-05",
+      "new_release": "2025-07-17",
+      "decade": 1980,
+      "share_updated": 0.038
+    },
+    {
+      "old_release": "2024-09-05",
+      "new_release": "2025-07-17",
+      "decade": 1990,
+      "share_updated": 0.0533
+    },
+    {
+      "old_release": "2024-09-05",
+      "new_release": "2025-07-17",
+      "decade": 2000,
+      "share_updated": 0.0817
+    },
+    {
+      "old_release": "2024-09-05",
+      "new_release": "2025-07-17",
+      "decade": 2010,
+      "share_updated": 0.1426
+    },
+    {
+      "old_release": "2024-09-05",
+      "new_release": "2025-07-17",
+      "decade": 2020,
+      "share_updated": 0.4588
+    },
+    {
+      "old_release": "2025-07-17",
+      "new_release": "2026-04-27",
+      "decade": 1960,
+      "share_updated": 0.0
+    },
+    {
+      "old_release": "2025-07-17",
+      "new_release": "2026-04-27",
+      "decade": 1970,
+      "share_updated": 0.0
+    },
+    {
+      "old_release": "2025-07-17",
+      "new_release": "2026-04-27",
+      "decade": 1980,
+      "share_updated": 0.0
+    },
+    {
+      "old_release": "2025-07-17",
+      "new_release": "2026-04-27",
+      "decade": 1990,
+      "share_updated": 0.0
+    },
+    {
+      "old_release": "2025-07-17",
+      "new_release": "2026-04-27",
+      "decade": 2000,
+      "share_updated": 0.0
+    },
+    {
+      "old_release": "2025-07-17",
+      "new_release": "2026-04-27",
+      "decade": 2010,
+      "share_updated": 0.0
+    },
+    {
+      "old_release": "2025-07-17",
+      "new_release": "2026-04-27",
+      "decade": 2020,
+      "share_updated": 0.0
+    }
+  ],
+  "identity_checks_latest_release": [
+    {
+      "check": "fossil = coal + oil + gas",
+      "rows_checked": 4465,
+      "rows_outside_1pct": 0,
+      "median_gap_pct_when_outside": null
+    },
+    {
+      "check": "generation = sum of sources",
+      "rows_checked": 4886,
+      "rows_outside_1pct": 0,
+      "median_gap_pct_when_outside": null
+    },
+    {
+      "check": "demand = generation + net imports",
+      "rows_checked": 5717,
+      "rows_outside_1pct": 0,
+      "median_gap_pct_when_outside": null
+    },
+    {
+      "check": "primary = fossil + low-carbon",
+      "rows_checked": 4465,
+      "rows_outside_1pct": 1054,
+      "median_gap_pct_when_outside": 1.58
+    }
+  ],
+  "countries": 220,
+  "fact_rows": 17265
+}
